@@ -1,0 +1,56 @@
+{% comment %}
+  Purelane Trust Bar Section
+{% endcomment %}
+
+<section class="sec" data-scene="4">
+  <div class="wrap">
+    <div class="glass trust rv">
+      {%- for block in section.blocks -%}
+        <div class="trust-i" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon_svg != blank -%}
+            {{ block.settings.icon_svg }}
+          {%- else -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+          {%- endif -%}
+          <span>{{ block.settings.text }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Purelane Trust Bar",
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG HTML"
+        },
+        {
+          "type": "html",
+          "id": "text",
+          "label": "Badge Text HTML",
+          "default": "Plant derived<br>formulas"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Trust Bar",
+      "blocks": [
+        { "type": "trust_item", "settings": { "text": "Plant derived<br>formulas" } },
+        { "type": "trust_item", "settings": { "text": "Recyclable<br>packaging" } },
+        { "type": "trust_item", "settings": { "text": "Safe for<br>kids & pets" } },
+        { "type": "trust_item", "settings": { "text": "Made in<br>India" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

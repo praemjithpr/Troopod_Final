@@ -1,0 +1,125 @@
+{% comment %}
+  Purelane Proof & Rotator Section
+{% endcomment %}
+
+<section class="sec" id="proof" data-scene="3">
+  <div class="wrap">
+    <div class="glass sec-pad rv">
+      <div class="proof">
+        <div class="proof-l">
+          <span class="kicker">{{ section.settings.kicker | default: 'Why it works' }}</span>
+          <h2 class="d2" style="margin-top:12px">{{ section.settings.heading | default: 'Tough on grime.<br>Gentle on everything else.' }}</h2>
+          <p class="body-s" style="max-width:40ch">{{ section.settings.text | default: 'Every formula is built on plant-derived cleansers and essential oils. It behaves exactly like the cleaner you are used to, minus the things you never signed up for.' }}</p>
+          <a class="btn btn-primary" href="{{ section.settings.btn_url | default: '#ingredients' }}">
+            {{ section.settings.btn_label | default: 'See the ingredient list' }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <!-- Product Rotator -->
+        <div class="glass-2 rot" id="rot" aria-hidden="true">
+          <div class="frame">
+            <span class="pimg p-kitchen on" role="img" aria-label="Kitchen cleaner" data-name="Kitchen cleaner" data-note="Foam lifts grease, no scrubbing"></span>
+            <span class="pimg p-tap" role="img" aria-label="Tap cleaner" data-name="Tap & limescale" data-note="Melts hard water stains"></span>
+            <span class="pimg p-laundry" role="img" aria-label="Laundry detergent" data-name="Laundry detergent" data-note="Tough on odour, soft on fabric"></span>
+            <span class="pimg p-toilet" role="img" aria-label="Toilet cleaner" data-name="Toilet cleaner" data-note="Kills 99.9% of germs"></span>
+            <span class="pimg p-floor" role="img" aria-label="Floor cleaner" data-name="Floor cleaner" data-note="Neem powered, pet safe"></span>
+            <span class="pimg p-dish" role="img" aria-label="Dishwash gel" data-name="Dishwash gel" data-note="Cuts grease, kind to hands"></span>
+          </div>
+          <div class="cap">
+            <b>Kitchen cleaner</b>
+            <span>Foam lifts grease, no scrubbing</span>
+          </div>
+          <div class="dots">
+            <i class="on"></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat Counter Rings -->
+      <div class="glass-2 stats proof-stats" style="grid-column:1/-1">
+        {%- for block in section.blocks -%}
+          <div class="stat" {{ block.shopify_attributes }}>
+            <div class="ring">{{ block.settings.stat_value }}</div>
+            <h5>{{ block.settings.stat_heading }}</h5>
+            <p>{{ block.settings.stat_sub }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Purelane Proof",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Why it works"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading HTML",
+      "default": "Tough on grime.<br>Gentle on everything else."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description Text",
+      "default": "Every formula is built on plant-derived cleansers and essential oils. It behaves exactly like the cleaner you are used to, minus the things you never signed up for."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "See the ingredient list"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat Ring",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stat_value",
+          "label": "Stat Ring Value",
+          "default": "99.9%"
+        },
+        {
+          "type": "text",
+          "id": "stat_heading",
+          "label": "Stat Heading",
+          "default": "Germ kill"
+        },
+        {
+          "type": "text",
+          "id": "stat_sub",
+          "label": "Stat Sub-text",
+          "default": "Tested against germs and bacteria"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Proof",
+      "blocks": [
+        { "type": "stat", "settings": { "stat_value": "99.9%", "stat_heading": "Germ kill", "stat_sub": "Tested against germs and bacteria" } },
+        { "type": "stat", "settings": { "stat_value": "0%", "stat_heading": "Sulphates", "stat_sub": "No SLS, chlorine or parabens" } },
+        { "type": "stat", "settings": { "stat_value": "100%", "stat_heading": "Plant based", "stat_sub": "Cleansers derived from plants" } },
+        { "type": "stat", "settings": { "stat_value": "4.8", "stat_heading": "Rated", "stat_sub": "Across 8,000+ verified reviews" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

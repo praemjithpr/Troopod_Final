@@ -1,0 +1,51 @@
+{% comment %}
+  Purelane Announcement Ticker Section
+{% endcomment %}
+
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    {%- for block in section.blocks -%}
+      <span>{{ block.settings.text_prefix }} <b>{{ block.settings.text_bold }}</b></span>
+    {%- endfor -%}
+    {%- for block in section.blocks -%}
+      <span>{{ block.settings.text_prefix }} <b>{{ block.settings.text_bold }}</b></span>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Purelane Ticker",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Ticker Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_prefix",
+          "label": "Prefix Text",
+          "default": "Free shipping"
+        },
+        {
+          "type": "text",
+          "id": "text_bold",
+          "label": "Highlighted Text",
+          "default": "on every bundle across India"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Ticker",
+      "blocks": [
+        { "type": "item", "settings": { "text_prefix": "Free shipping", "text_bold": "on every bundle across India" } },
+        { "type": "item", "settings": { "text_prefix": "100% plant-based", "text_bold": "and non-toxic" } },
+        { "type": "item", "settings": { "text_prefix": "Loved by", "text_bold": "30,000+ happy homes" } },
+        { "type": "item", "settings": { "text_prefix": "Buy 3", "text_bold": "at flat ₹499" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

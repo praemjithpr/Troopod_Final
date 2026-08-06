@@ -1,0 +1,105 @@
+{% comment %}
+  Purelane Pillars Section
+{% endcomment %}
+
+<section class="sec" id="how" data-scene="2">
+  <div class="wrap">
+    <div class="pillars">
+      {%- for block in section.blocks -%}
+        <article class="glass pillar rv {{ block.settings.delay_class }}" {{ block.shopify_attributes }}>
+          <span class="pi">
+            {%- if block.settings.icon_svg != blank -%}
+              {{ block.settings.icon_svg }}
+            {%- else -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8.5" r="3.2"/><circle cx="16.4" cy="6.6" r="2.2"/><circle cx="15" cy="13" r="2.8"/><circle cx="8.6" cy="15.6" r="2.1"/><path d="M4 21h16"/></svg>
+            {%- endif -%}
+          </span>
+          <h3 class="d3">{{ block.settings.title }}</h3>
+          <p class="body-s">{{ block.settings.text }}</p>
+          <a class="btn btn-ghost btn-sm" href="{{ block.settings.url | default: '#shop' }}">{{ block.settings.link_label | default: 'Learn more' }}</a>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Purelane Pillars",
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar Card",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG HTML"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Pillar Title",
+          "default": "Less scrubbing"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Body Text",
+          "default": "A foaming formulation. The foam clings to grease and lifts it, so you wipe instead of scrub."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link Label",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "delay_class",
+          "label": "Delay Class",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Pillars",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Less scrubbing",
+            "text": "A foaming formulation. The foam clings to grease and lifts it, so you wipe instead of scrub.",
+            "url": "#shop"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Clean ingredients",
+            "text": "No sulphates, no chlorine, no synthetic fragrance. Nothing on the label you would not want near your food.",
+            "url": "#ingredients",
+            "delay_class": "rv-d2"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Safe around everyone",
+            "text": "Gentle on hands, safe around kids and pets, and it leaves no toxic residue on the surfaces you touch every day.",
+            "url": "#proof",
+            "delay_class": "rv-d3"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

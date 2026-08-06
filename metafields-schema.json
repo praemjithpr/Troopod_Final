@@ -1,0 +1,59 @@
+{
+  "metafield_definitions": [
+    {
+      "name": "Product Rating Score",
+      "namespace": "reviews",
+      "key": "rating",
+      "type": "number_decimal",
+      "description": "Average review rating score (e.g. 4.8)",
+      "owner_type": "PRODUCT"
+    },
+    {
+      "name": "Product Review Count",
+      "namespace": "reviews",
+      "key": "rating_count",
+      "type": "number_integer",
+      "description": "Total number of verified reviews",
+      "owner_type": "PRODUCT"
+    },
+    {
+      "name": "Combo Product Inclusions",
+      "namespace": "purelane",
+      "key": "combo_inclusions",
+      "type": "list.product_reference",
+      "description": "List of products included in a combo box",
+      "owner_type": "PRODUCT"
+    },
+    {
+      "name": "Product Key Ingredient",
+      "namespace": "purelane",
+      "key": "key_ingredient",
+      "type": "single_line_text_field",
+      "description": "Primary botanical ingredient (e.g. Neem, Coconut, Orange Peel)",
+      "owner_type": "PRODUCT"
+    }
+  ],
+  "metaobject_definitions": [
+    {
+      "name": "Plant Ingredient",
+      "type": "plant_ingredient",
+      "field_definitions": [
+        {
+          "name": "Name",
+          "key": "name",
+          "type": "single_line_text_field"
+        },
+        {
+          "name": "Benefit Summary",
+          "key": "benefit",
+          "type": "single_line_text_field"
+        },
+        {
+          "name": "SVG Icon HTML",
+          "key": "svg_icon",
+          "type": "multi_line_text_field"
+        }
+      ]
+    }
+  ]
+}

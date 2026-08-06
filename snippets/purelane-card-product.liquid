@@ -1,0 +1,146 @@
+{% comment %}
+  Purelane Reusable Product Card Snippet
+  Renders product card with support for real Shopify product objects, fallback SVG images,
+  sold-out state badges, rating stars, price calculations, long title line clamping,
+  and AJAX Add to Cart action.
+
+  Accepts:
+  - card_product: {Object} Shopify Product Object (optional)
+  - fallback_title: {String} Fallback title if product is null
+  - fallback_price: {Number} Price in cents if product is null (e.g., 20000 = ₹200)
+  - fallback_compare_price: {Number} Compare price in cents (e.g., 29900 = ₹299)
+  - badge_label: {String} Optional badge label override ("Best seller", "New", "Top rated")
+  - rating_value: {String} Rating value (default "4.8")
+  - rating_reviews: {String} Number of reviews (default "237")
+  - delay_class: {String} Reveal delay modifier ("rv-d1", "rv-d2", "rv-d3")
+{% endcomment %}
+
+{%- liquid
+  assign is_real_product = false
+  if card_product != blank
+    assign is_real_product = true
+    assign product_title = card_product.title
+    assign product_url = card_product.url
+    assign current_variant = card_product.selected_or_first_available_variant
+    assign price = card_product.price
+    assign compare_price = card_product.compare_at_price
+    assign is_available = card_product.available
+  else
+    assign product_title = fallback_title | default: 'Tap cleaner & limescale remover'
+    assign product_url = '#shop'
+    assign price = fallback_price | default: 20000
+    assign compare_price = fallback_compare_price | default: 29900
+    assign is_available = true
+  endif
+
+  assign discount_percentage = 0
+  if compare_price > price
+    assign savings = compare_price | minus: price
+    assign discount_percentage = savings | times: 100 | divided_by: compare_price
+  endif
+-%}
+
+<article class="glass card rv {{ delay_class }}">
+  <div class="shot">
+    {%- if is_available == false -%}
+      <span class="pill pill-soldout">Sold out</span>
+    {%- elsif badge_label != blank -%}
+      <span class="pill">{{ badge_label }}</span>
+    {%- elsif discount_percentage > 0 -%}
+      <span class="pill">{{ discount_percentage }}% OFF</span>
+    {%- else -%}
+      <span class="pill">Best seller</span>
+    {%- endif -%}
+
+    {%- if is_real_product and card_product.featured_media != blank -%}
+      <a href="{{ product_url }}" aria-label="{{ product_title | escape }}">
+        <img
+          src="{{ card_product.featured_media | image_url: width: 320 }}"
+          alt="{{ card_product.featured_media.alt | default: product_title | escape }}"
+          loading="lazy"
+          width="160"
+          height="160"
+        >
+      </a>
+    {%- else -%}
+      <!-- Fallback SVG product bottle when no image is present -->
+      <a href="{{ product_url }}" aria-label="{{ product_title | escape }}">
+        <svg viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ product_title | escape }}">
+          <defs>
+            <linearGradient id="gPureb_{{ card_product.id | default: 'fallback' }}" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".10"/>
+              <stop offset=".18" stop-color="#ffffff" stop-opacity=".38"/>
+              <stop offset=".5" stop-color="#dff3e4" stop-opacity=".10"/>
+              <stop offset="1" stop-color="#9fc7b4" stop-opacity=".32"/>
+            </linearGradient>
+            <linearGradient id="gPurel_{{ card_product.id | default: 'fallback' }}" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#04756e"/>
+              <stop offset=".55" stop-color="#4b3a8f"/>
+              <stop offset="1" stop-color="#013f3d"/>
+            </linearGradient>
+            <linearGradient id="gPurec_{{ card_product.id | default: 'fallback' }}" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#8fa89b"/>
+              <stop offset=".22" stop-color="#eef6ef"/>
+              <stop offset="1" stop-color="#7d938c"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="65" cy="190" rx="40" ry="7" fill="#01201c" opacity=".5"/>
+          <path d="M40 60V48c0-7 5-12 12-12h13c8 0 13 6 13 13v11Z" fill="url(#gPurec_{{ card_product.id | default: 'fallback' }})"/>
+          <rect x="38" y="56" width="42" height="7" rx="3" fill="#a8bdb2"/>
+          <path d="M28 96c0-11 6-18 15-24v-8h33v8c9 6 15 13 15 24v62c0 12-8 20-21 20H49c-13 0-21-8-21-20Z" fill="url(#gPureb_{{ card_product.id | default: 'fallback' }})" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="31" y="112" width="66" height="60" rx="6" fill="url(#gPurel_{{ card_product.id | default: 'fallback' }})"/>
+          <text x="64" y="140" text-anchor="middle" font-family="Outfit, sans-serif" font-size="8.6" font-weight="800" letter-spacing=".7" fill="#faf7fd">PURELANE</text>
+          <line x1="42" y1="146" x2="86" y2="146" stroke="#f0a03c" stroke-width=".9" opacity=".85"/>
+          <text x="64" y="158" text-anchor="middle" font-family="Inter, sans-serif" font-size="6.0" font-weight="700" letter-spacing="1.0" fill="#ece6f7">NATURAL CARE</text>
+        </svg>
+      </a>
+    {%- endif -%}
+  </div>
+
+  <h4 title="{{ product_title | escape }}">
+    <a href="{{ product_url }}">{{ product_title }}</a>
+  </h4>
+
+  <div class="rate">
+    <b>★ {{ rating_value | default: '4.8' }}</b> · {{ rating_reviews | default: '237' }} reviews
+  </div>
+
+  <div class="pr">
+    <strong>{{ price | money_without_trailing_zeros }}</strong>
+    {%- if compare_price > price -%}
+      <s>{{ compare_price | money_without_trailing_zeros }}</s>
+      {%- if discount_percentage > 0 -%}
+        <em>{{ discount_percentage }}% off</em>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+
+  {%- if is_real_product and current_variant != blank -%}
+    {%- form 'product', card_product, id: nil, class: 'purelane-quick-add-form' -%}
+      <input type="hidden" name="id" value="{{ current_variant.id }}">
+      <button
+        type="submit"
+        class="btn btn-ghost btn-sm"
+        {% unless is_available %}disabled aria-disabled="true"{% endunless %}
+      >
+        {%- if is_available -%}
+          Add to cart
+        {%- else -%}
+          Out of stock
+        {%- endif -%}
+      </button>
+    {%- endform -%}
+  {%- else -%}
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm"
+      {% unless is_available %}disabled aria-disabled="true"{% endunless %}
+    >
+      {%- if is_available -%}
+        Add to cart
+      {%- else -%}
+        Out of stock
+      {%- endif -%}
+    </button>
+  {%- endif -%}
+</article>

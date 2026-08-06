@@ -1,0 +1,109 @@
+{% comment %}
+  Purelane Shop / Product Grid Section
+  Section 02 from prototype specification
+{% endcomment %}
+
+<section class="sec" id="shop" data-scene="3">
+  <div class="wrap">
+    <div class="panel-head rv">
+      <span class="kicker">{{ section.settings.kicker | default: 'Bestsellers' }}</span>
+      <h2 class="d2" style="margin-top:12px">{{ section.settings.heading | default: 'Loved by 30,000 homes' }}</h2>
+      <div class="rule">
+        <i></i>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+        <i></i>
+      </div>
+    </div>
+
+    <div class="shelf">
+      {%- assign featured_collection = collections[section.settings.collection] -%}
+      {%- if featured_collection != blank and featured_collection.products_count > 0 -%}
+        {%- for product in featured_collection.products limit: section.settings.products_limit -%}
+          {%- assign mod = forloop.index0 | modulo: 4 -%}
+          {%- assign delay = 'rv-d' | append: mod -%}
+          {%- render 'purelane-card-product',
+            card_product: product,
+            delay_class: delay
+          -%}
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback standard product cards matching prototype -->
+        {%- render 'purelane-card-product',
+          fallback_title: 'Tap cleaner & limescale remover',
+          fallback_price: 20000,
+          fallback_compare_price: 29900,
+          badge_label: 'Best seller',
+          rating_value: '4.8',
+          rating_reviews: '237',
+          delay_class: ''
+        -%}
+        {%- render 'purelane-card-product',
+          fallback_title: 'Kitchen cleaner, foaming',
+          fallback_price: 20000,
+          fallback_compare_price: 29900,
+          badge_label: 'Best seller',
+          rating_value: '4.8',
+          rating_reviews: '254',
+          delay_class: 'rv-d1'
+        -%}
+        {%- render 'purelane-card-product',
+          fallback_title: 'Copper, bronze & brass cleaner',
+          fallback_price: 20000,
+          fallback_compare_price: 29900,
+          badge_label: 'Top rated',
+          rating_value: '4.8',
+          rating_reviews: '231',
+          delay_class: 'rv-d2'
+        -%}
+        {%- render 'purelane-card-product',
+          fallback_title: 'Washing machine cleaner & descaler',
+          fallback_price: 20000,
+          fallback_compare_price: 29900,
+          badge_label: 'New',
+          rating_value: '4.8',
+          rating_reviews: '183',
+          delay_class: 'rv-d3'
+        -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Purelane Shop Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Bestsellers"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Loved by 30,000 homes"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Featured Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 4,
+      "max": 16,
+      "step": 4,
+      "label": "Products Limit",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Shop Grid"
+    }
+  ]
+}
+{% endschema %}

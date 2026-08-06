@@ -1,0 +1,178 @@
+{
+  "products": [
+    {
+      "title": "Tap cleaner & limescale remover",
+      "body_html": "<p>Hard water stain remover for bathroom and kitchen taps. Melts limescale without scrubbing.</p>",
+      "vendor": "Purelane",
+      "product_type": "Bathroom Cleaner",
+      "status": "active",
+      "variants": [
+        {
+          "price": "200.00",
+          "compare_at_price": "299.00",
+          "inventory_quantity": 45,
+          "inventory_management": "shopify"
+        }
+      ],
+      "images": [
+        { "src": "https://cdn.shopify.com/s/files/1/0000/0000/products/tap_cleaner.png" }
+      ],
+      "metafields": [
+        { "namespace": "reviews", "key": "rating", "value": "4.8", "type": "number_decimal" },
+        { "namespace": "reviews", "key": "rating_count", "value": "237", "type": "number_integer" }
+      ]
+    },
+    {
+      "title": "Kitchen cleaner, foaming",
+      "body_html": "<p>Foaming kitchen degreaser powered by coconut and citrus oils. Cuts instant grease.</p>",
+      "vendor": "Purelane",
+      "product_type": "Kitchen Cleaner",
+      "status": "active",
+      "variants": [
+        {
+          "price": "200.00",
+          "compare_at_price": "299.00",
+          "inventory_quantity": 60,
+          "inventory_management": "shopify"
+        }
+      ],
+      "images": [
+        { "src": "https://cdn.shopify.com/s/files/1/0000/0000/products/kitchen_cleaner.png" }
+      ],
+      "metafields": [
+        { "namespace": "reviews", "key": "rating", "value": "4.8", "type": "number_decimal" },
+        { "namespace": "reviews", "key": "rating_count", "value": "254", "type": "number_integer" }
+      ]
+    },
+    {
+      "title": "Natural herbal floor cleaner",
+      "body_html": "<p>Neem powered floor cleaner. Kills 99.9% of germs while remaining 100% safe for pets and toddlers.</p>",
+      "vendor": "Purelane",
+      "product_type": "Floor Cleaner",
+      "status": "active",
+      "variants": [
+        {
+          "price": "200.00",
+          "compare_at_price": "299.00",
+          "inventory_quantity": 30,
+          "inventory_management": "shopify"
+        }
+      ],
+      "images": [
+        { "src": "https://cdn.shopify.com/s/files/1/0000/0000/products/floor_cleaner.png" }
+      ],
+      "metafields": [
+        { "namespace": "reviews", "key": "rating", "value": "4.9", "type": "number_decimal" },
+        { "namespace": "reviews", "key": "rating_count", "value": "310", "type": "number_integer" }
+      ]
+    },
+    {
+      "title": "Non-toxic laundry detergent",
+      "body_html": "<p>Plant-based liquid laundry detergent. Tough on odor and stains, gentle on skin and delicate fabrics.</p>",
+      "vendor": "Purelane",
+      "product_type": "Laundry Detergent",
+      "status": "active",
+      "variants": [
+        {
+          "price": "250.00",
+          "compare_at_price": "349.00",
+          "inventory_quantity": 25,
+          "inventory_management": "shopify"
+        }
+      ],
+      "images": [
+        { "src": "https://cdn.shopify.com/s/files/1/0000/0000/products/laundry_detergent.png" }
+      ],
+      "metafields": [
+        { "namespace": "reviews", "key": "rating", "value": "4.8", "type": "number_decimal" },
+        { "namespace": "reviews", "key": "rating_count", "value": "190", "type": "number_integer" }
+      ]
+    },
+    {
+      "title": "Organic dishwash liquid gel",
+      "body_html": "<p>Coconut cleanser dishwash gel. Cuts oil instantly, leaves dishes squeaky clean with soft hands.</p>",
+      "vendor": "Purelane",
+      "product_type": "Dishwash Gel",
+      "status": "active",
+      "variants": [
+        {
+          "price": "180.00",
+          "compare_at_price": "249.00",
+          "inventory_quantity": 50,
+          "inventory_management": "shopify"
+        }
+      ],
+      "images": [
+        { "src": "https://cdn.shopify.com/s/files/1/0000/0000/products/dishwash_gel.png" }
+      ],
+      "metafields": [
+        { "namespace": "reviews", "key": "rating", "value": "4.7", "type": "number_decimal" },
+        { "namespace": "reviews", "key": "rating_count", "value": "142", "type": "number_integer" }
+      ]
+    },
+    {
+      "title": "Copper, bronze & brass cleaner [SOLD OUT TEST]",
+      "body_html": "<p>Restores shine to brass, copper, and bronze idols and cookware. Non-acidic gentle paste.</p>",
+      "vendor": "Purelane",
+      "product_type": "Metal Cleaner",
+      "status": "active",
+      "variants": [
+        {
+          "price": "200.00",
+          "compare_at_price": "299.00",
+          "inventory_quantity": 0,
+          "inventory_management": "shopify"
+        }
+      ],
+      "images": [
+        { "src": "https://cdn.shopify.com/s/files/1/0000/0000/products/copper_cleaner.png" }
+      ],
+      "metafields": [
+        { "namespace": "reviews", "key": "rating", "value": "4.8", "type": "number_decimal" },
+        { "namespace": "reviews", "key": "rating_count", "value": "231", "type": "number_integer" }
+      ]
+    },
+    {
+      "title": "Magic eraser scrub pad [NO IMAGE TEST]",
+      "body_html": "<p>High density melamime magic eraser pad. Removes tough scuffs and dried water marks using only water.</p>",
+      "vendor": "Purelane",
+      "product_type": "Cleaning Tool",
+      "status": "active",
+      "variants": [
+        {
+          "price": "149.00",
+          "compare_at_price": "199.00",
+          "inventory_quantity": 100,
+          "inventory_management": "shopify"
+        }
+      ],
+      "images": [],
+      "metafields": [
+        { "namespace": "reviews", "key": "rating", "value": "4.6", "type": "number_decimal" },
+        { "namespace": "reviews", "key": "rating_count", "value": "88", "type": "number_integer" }
+      ]
+    },
+    {
+      "title": "Purelane Plant-Based Ultra Concentrated Foaming Surface & Multi-Touch Point Sanitizing Kitchen Cleaner Refill Pack 1000ml [VERY LONG TITLE TEST]",
+      "body_html": "<p>Eco refill pouch for foaming kitchen spray. Concentrated formula yields 2 full spray bottles.</p>",
+      "vendor": "Purelane",
+      "product_type": "Refill Pack",
+      "status": "active",
+      "variants": [
+        {
+          "price": "349.00",
+          "compare_at_price": "499.00",
+          "inventory_quantity": 20,
+          "inventory_management": "shopify"
+        }
+      ],
+      "images": [
+        { "src": "https://cdn.shopify.com/s/files/1/0000/0000/products/kitchen_refill.png" }
+      ],
+      "metafields": [
+        { "namespace": "reviews", "key": "rating", "value": "4.9", "type": "number_decimal" },
+        { "namespace": "reviews", "key": "rating_count", "value": "56", "type": "number_integer" }
+      ]
+    }
+  ]
+}

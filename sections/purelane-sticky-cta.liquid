@@ -1,0 +1,49 @@
+{% comment %}
+  Purelane Mobile Sticky CTA Bar Section
+{% endcomment %}
+
+<div class="sticky">
+  <span class="lbl">
+    <b>{{ section.settings.bold_text | default: 'Pick any 3, pay ₹499' }}</b>
+    <span>{{ section.settings.sub_text | default: 'Free shipping, always' }}</span>
+  </span>
+  <a class="btn btn-primary btn-sm" href="{{ section.settings.btn_url | default: '#bundles' }}">
+    {{ section.settings.btn_label | default: 'Build bundle' }}
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "Purelane Sticky CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bold_text",
+      "label": "Bold Text",
+      "default": "Pick any 3, pay ₹499"
+    },
+    {
+      "type": "text",
+      "id": "sub_text",
+      "label": "Sub-text",
+      "default": "Free shipping, always"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "Build bundle"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Sticky CTA"
+    }
+  ]
+}
+{% endschema %}

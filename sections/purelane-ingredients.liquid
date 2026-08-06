@@ -1,0 +1,90 @@
+{% comment %}
+  Purelane Sourced From Nature Ingredients Section
+{% endcomment %}
+
+<section class="sec" id="ingredients" data-scene="2">
+  <div class="wrap">
+    <div class="glass sec-pad rv">
+      <div class="panel-head">
+        <h2 class="d2">{{ section.settings.heading | default: 'Sourced from nature' }}</h2>
+        <div class="rule">
+          <i></i>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+          <i></i>
+        </div>
+      </div>
+      <div class="ing">
+        {%- for block in section.blocks -%}
+          <div class="ing-i" {{ block.shopify_attributes }}>
+            <div class="art">
+              {%- if block.settings.svg_html != blank -%}
+                {{ block.settings.svg_html }}
+              {%- else -%}
+                <svg viewBox="0 0 100 100" fill="none" stroke="#ece6f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="50" cy="62" r="25"/>
+                  <path d="M31 53c9-6 29-6 38 0" stroke="#f0a03c"/>
+                  <path d="M41 63c4 8 14 8 18 0" opacity=".55"/>
+                  <path d="M50 37V25"/>
+                  <path d="M50 27C42 18 30 16 21 21c5 10 17 13 29 6Z" stroke="#f0a03c"/>
+                </svg>
+              {%- endif -%}
+            </div>
+            <h4>{{ block.settings.title }}</h4>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Purelane Ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Sourced from nature"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "html",
+          "id": "svg_html",
+          "label": "Illustration SVG HTML"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Ingredient Name",
+          "default": "Coconut"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Plant-derived cleansers that lift grease"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Ingredients",
+      "blocks": [
+        { "type": "ingredient", "settings": { "title": "Coconut", "description": "Plant-derived cleansers that lift grease" } },
+        { "type": "ingredient", "settings": { "title": "Orange peel", "description": "Natural degreaser and fresh citrus lift" } },
+        { "type": "ingredient", "settings": { "title": "Soap nut", "description": "A traditional plant foaming agent" } },
+        { "type": "ingredient", "settings": { "title": "Neem", "description": "Time-tested antibacterial from the tree" } },
+        { "type": "ingredient", "settings": { "title": "Lemongrass", "description": "Clean fragrance with nothing synthetic" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
