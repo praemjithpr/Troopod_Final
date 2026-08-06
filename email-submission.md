@@ -16,7 +16,7 @@ Beyond meeting 100% of your core requirements, I built **3 stand-out CRO and eng
 ### 1. Store & Repository Links
 - **Dev Store URL**: `https://purelane-demo.myshopify.com` (replace with your development store URL)
 - **Store Password**: `purelane2026` (replace with your development store password)
-- **GitHub Repository**: `https://github.com/praemjith/purelane-shopify-theme`
+- **GitHub Repository**: `https://github.com/praemjithpr/Troopod_Final.git`
 
 ---
 
