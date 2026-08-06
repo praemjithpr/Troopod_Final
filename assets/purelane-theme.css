@@ -132,7 +132,7 @@ button {
 .s4 { background: linear-gradient(178deg,#e9f8ec 0%,#cdedd6 30%,#addcbe 62%,#8ecdaa 100%); }
 
 .water { position: absolute; inset: -14% -10%; pointer-events: none; transition: opacity 1.2s ease; }
-.wl { position: absolute; inset: 0; will-change: transform; transform: translate3d(var(--px,0), var(--py,0), 0); }
+.wl { position: absolute; inset: 0; will-change: transform; transform: translateZ(0); }
 .wl .sv { width: 100%; height: 100%; }
 
 .wl-a { mix-blend-mode: soft-light; opacity: 1; animation: drift-a 34s linear infinite; }

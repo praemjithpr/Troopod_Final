@@ -1661,15 +1661,7 @@ footer{background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(214,241,221,
     }, { passive: true });
   }
 
-  /* ---------- ambient drift on the hero product ---------- */
-  if (!reduce && prod) {
-    prod.animate(
-      [{ filter: 'drop-shadow(0 34px 54px rgba(2,20,19,.6))' },
-       { filter: 'drop-shadow(0 42px 68px rgba(2,20,19,.68))' },
-       { filter: 'drop-shadow(0 34px 54px rgba(2,20,19,.6))' }],
-      { duration: 7000, iterations: Infinity, easing: 'ease-in-out' }
-    );
-  }
+  /* ---------- ambient drift on hero product disabled for smooth GPU rendering ---------- */
 
   /* ---------- hero stage: 1 -> 2 -> 3 products ---------- */
   var hstage = document.getElementById('hstage');
