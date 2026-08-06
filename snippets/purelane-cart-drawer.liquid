@@ -1,0 +1,80 @@
+{% comment %}
+  Purelane AJAX Cart Drawer Component (Standout Feature)
+  Renders a high-conversion glassmorphism slide-over cart drawer with live progress bar,
+  bundle discount calculator, line item list, and instant checkout action.
+{% endcomment %}
+
+<div class="purelane-cart-drawer-overlay" id="purelaneCartOverlay" aria-hidden="true"></div>
+
+<aside class="purelane-cart-drawer glass" id="purelaneCartDrawer" aria-hidden="true" role="dialog" aria-label="Shopping Cart">
+  <div class="cart-drawer-header">
+    <div class="cart-drawer-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h2l2.2 10.4a1.6 1.6 0 0 0 1.6 1.3h7.6a1.6 1.6 0 0 0 1.6-1.3L20.5 9H6.4"/><circle cx="10" cy="20.5" r="1.1"/><circle cx="17.5" cy="20.5" r="1.1"/></svg>
+      <h3>Your Box (<span class="purelane-cart-count">{{ cart.item_count }}</span>)</h3>
+    </div>
+    <button type="button" class="cart-drawer-close" id="purelaneCartClose" aria-label="Close Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <!-- AOV Bundle Progress Bar -->
+  <div class="cart-progress-banner glass-2">
+    {%- assign free_shipping_threshold = 49900 -%}
+    {%- assign current_total = cart.total_price -%}
+    {%- if current_total >= free_shipping_threshold -%}
+      <p class="progress-unlocked">🎉 You unlocked <strong>FREE Shipping & Flat ₹499 Combo Rate!</strong></p>
+    {%- else -%}
+      {%- assign needed = free_shipping_threshold | minus: current_total -%}
+      <p>Add <strong>{{ needed | money_without_trailing_zeros }}</strong> more to unlock <strong>Free Shipping!</strong></p>
+    {%- endif -%}
+  </div>
+
+  <!-- Cart Line Items Container -->
+  <div class="cart-drawer-body">
+    {%- if cart.item_count > 0 -%}
+      <ul class="cart-line-items">
+        {%- for item in cart.items -%}
+          <li class="cart-line-item glass-2">
+            <div class="item-image">
+              {%- if item.image != blank -%}
+                <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" width="60" height="60">
+              {%- else -%}
+                <div class="item-no-image">No image</div>
+              {%- endif -%}
+            </div>
+            <div class="item-details">
+              <h4>{{ item.product.title }}</h4>
+              {%- unless item.product.has_only_default_variant -%}
+                <p class="item-variant">{{ item.variant.title }}</p>
+              {%- endunless -%}
+              <div class="item-price">{{ item.final_line_price | money_without_trailing_zeros }}</div>
+            </div>
+            <div class="item-qty-controls">
+              <span>Qty: {{ item.quantity }}</span>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <div class="cart-empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="width:48px;height:48px;margin:0 auto 12px;opacity:0.4"><path d="M4 6h2l2.2 10.4a1.6 1.6 0 0 0 1.6 1.3h7.6a1.6 1.6 0 0 0 1.6-1.3L20.5 9H6.4"/><circle cx="10" cy="20.5" r="1.1"/><circle cx="17.5" cy="20.5" r="1.1"/></svg>
+        <p>Your box is empty.</p>
+        <a href="#shop" class="btn btn-ghost btn-sm" onclick="document.getElementById('purelaneCartClose').click();" style="margin-top:14px">Browse Bestsellers</a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Cart Footer & Checkout Action -->
+  <div class="cart-drawer-footer">
+    <div class="cart-subtotal-row">
+      <span>Subtotal</span>
+      <strong class="purelane-cart-subtotal">{{ cart.total_price | money_without_trailing_zeros }}</strong>
+    </div>
+    <form action="{{ routes.cart_url }}" method="post">
+      <button type="submit" name="checkout" class="btn btn-primary" style="width:100%;justify-center;" {% if cart.item_count == 0 %}disabled{% endif %}>
+        Proceed to Checkout
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+      </button>
+    </form>
+  </div>
+</aside>

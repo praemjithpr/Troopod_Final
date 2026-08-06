@@ -190,15 +190,53 @@
     frame();
   }
 
+  /* 4. AJAX CART DRAWER CONTROLLER */
+  function initCartDrawer() {
+    var drawer = document.getElementById('purelaneCartDrawer');
+    var overlay = document.getElementById('purelaneCartOverlay');
+    var closeBtn = document.getElementById('purelaneCartClose');
+    var cartTriggers = document.querySelectorAll('a[href="/cart"], button.ico[aria-label*="Cart"]');
+
+    function openCart() {
+      if (drawer) drawer.classList.add('active');
+      if (overlay) overlay.classList.add('active');
+    }
+
+    function closeCart() {
+      if (drawer) drawer.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
+    }
+
+    cartTriggers.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openCart();
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeCart);
+    if (overlay) overlay.addEventListener('click', closeCart);
+
+    /* Intercept Quick Add Forms for Instant Drawer Experience */
+    document.addEventListener('submit', function (e) {
+      if (e.target && e.target.classList.contains('purelane-quick-add-form')) {
+        e.preventDefault();
+        openCart();
+      }
+    });
+  }
+
   /* DOM READY ATTACHMENT & SHOPIFY THEME EDITOR LISTENERS */
   document.addEventListener('DOMContentLoaded', function () {
     initPurelaneEngine(document);
     initGlobalScroll();
+    initCartDrawer();
   });
 
   /* Shopify Theme Editor Event Lifecycle Handlers */
   document.addEventListener('shopify:section:load', function (e) {
     initPurelaneEngine(e.target);
+    initCartDrawer();
   });
 
   document.addEventListener('shopify:section:select', function (e) {
