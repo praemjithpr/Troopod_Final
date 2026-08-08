@@ -3,28 +3,19 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- reveal on scroll ---------- */
-  var ro = null;
-  function initScrollReveals() {
-    var revs = document.querySelectorAll('.rv');
-    var isDesignMode = Boolean(window.Shopify && window.Shopify.designMode);
-    if ('IntersectionObserver' in window && !reduce && !isDesignMode) {
-      if (ro) ro.disconnect();
-      ro = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('in');
-            ro.unobserve(e.target);
-          }
-        });
-      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
-      revs.forEach(function (el) { ro.observe(el); });
-    } else {
-      revs.forEach(function (el) { el.classList.add('in'); });
-    }
+  var revs = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var ro = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    revs.forEach(function (el) { ro.observe(el); });
+  } else {
+    revs.forEach(function (el) { el.classList.add('in'); });
   }
 
   /* ---------- scene crossfade (scroll driven, deterministic) ---------- */
   var scenes = [].slice.call(document.querySelectorAll('.scene'));
+  var zones = [].slice.call(document.querySelectorAll('[data-scene]'));
   var stage = document.getElementById('scenes');
   var current = 0;
   function setScene(n) {
@@ -34,7 +25,6 @@
     if (stage) stage.setAttribute('data-d', String(n));
   }
   function pickScene() {
-    var zones = [].slice.call(document.querySelectorAll('[data-scene]'));
     var focus = window.scrollY + window.innerHeight * 0.5, n = 1;
     for (var i = 0; i < zones.length; i++) {
       var z = zones[i], top = 0, el = z;
@@ -45,9 +35,9 @@
   }
 
   /* ---------- rail sync ---------- */
+  var railLinks = [].slice.call(document.querySelectorAll('.rail a'));
+  var targets = railLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
   function syncRail() {
-    var railLinks = [].slice.call(document.querySelectorAll('.rail a'));
-    var targets = railLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
     var mid = window.scrollY + window.innerHeight * 0.42, idx = 0;
     targets.forEach(function (t, i) { if (t && t.offsetTop <= mid) idx = i; });
     railLinks.forEach(function (a, i) { a.classList.toggle('on', i === idx); });
@@ -153,14 +143,7 @@
     }
   }
 
-  initScrollReveals();
   frame();
-
-  // Re-hook scroll reveals when sections reload in the Shopify editor
-  document.addEventListener('shopify:section:load', function() {
-    initScrollReveals();
-    frame();
-  });
 })();
 
 
