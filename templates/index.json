@@ -1,8 +1,5 @@
 {
   "sections": {
-    "ticker": {
-      "type": "purelane-ticker"
-    },
     "hero": {
       "type": "purelane-hero"
     },
@@ -47,7 +44,6 @@
     }
   },
   "order": [
-    "ticker",
     "hero",
     "reviews",
     "ingredients",

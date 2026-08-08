@@ -621,6 +621,12 @@ footer{position:relative;z-index:2;margin-top:var(--sec-y);padding:44px 0 30px;b
 }
 
 
-/* Ensure all scroll-reveal elements are 100% visible */
-.rv { opacity: 1 !important; transform: none !important; filter: none !important; }
-.rv.in, .shopify-design-mode .rv, [data-shopify-editor-events-enabled] .rv { opacity: 1 !important; transform: none !important; filter: none !important; }
+/* Shopify Theme Editor Design Mode Overrides - Always Visible */
+.shopify-design-mode .rv,
+[data-shopify-editor-events-enabled] .rv,
+body.shopify-design-mode .rv {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
