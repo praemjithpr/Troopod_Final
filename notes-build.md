@@ -5,7 +5,7 @@
 - **Recipient**: `nj@troopod.io`
 - **Dev Store URL**: `[Insert Store URL, e.g. https://purelane-demo.myshopify.com]`
 - **Dev Store Storefront Password**: `[Insert Storefront Password]`
-- **GitHub Repository**: `[Insert GitHub Repo URL]`
+- **GitHub Repository**: `https://github.com/praemjithpr/Troopod_Final`
 - **Metafield Definitions**: Included in [`metafields-schema.json`](file:///c:/Users/PRAEMJITH%20P%20R/Downloads/Tropod/metafields-schema.json)
 - **Seed Products Data**: Included in [`products-seed-data.json`](file:///c:/Users/PRAEMJITH%20P%20R/Downloads/Tropod/products-seed-data.json)
 
