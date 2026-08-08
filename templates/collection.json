@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "shop": {
+      "type": "purelane-shop"
+    }
+  },
+  "order": [
+    "shop"
+  ]
+}

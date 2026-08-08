@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "hero": {
+      "type": "purelane-hero"
+    }
+  },
+  "order": [
+    "hero"
+  ]
+}
