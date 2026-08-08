@@ -1,10 +1,36 @@
 {
   "sections": {
-    "hero": {
-      "type": "purelane-hero"
-    }
+    "ticker": { "type": "purelane-ticker" },
+    "hero": { "type": "purelane-hero" },
+    "reviews": { "type": "purelane-reviews" },
+    "ingredients": { "type": "purelane-ingredients" },
+    "pillars": { "type": "purelane-pillars" },
+    "proof": { "type": "purelane-proof" },
+    "combos": { "type": "purelane-combos" },
+    "bundles": { "type": "purelane-bundles" },
+    "shop": { "type": "purelane-shop" },
+    "full_range": { "type": "purelane-full-range" },
+    "why_bundles": { "type": "purelane-why-bundles" },
+    "categories": { "type": "purelane-categories" },
+    "trust_bar": { "type": "purelane-trust-bar" },
+    "signup": { "type": "purelane-signup" },
+    "sticky_cta": { "type": "purelane-sticky-cta" }
   },
   "order": [
-    "hero"
+    "ticker",
+    "hero",
+    "reviews",
+    "ingredients",
+    "pillars",
+    "proof",
+    "combos",
+    "bundles",
+    "shop",
+    "full_range",
+    "why_bundles",
+    "categories",
+    "trust_bar",
+    "signup",
+    "sticky_cta"
   ]
 }
