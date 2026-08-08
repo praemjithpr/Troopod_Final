@@ -51,3 +51,22 @@ While `purelane-homepage.html` is visually striking with dynamic water caustics,
 1. **Metaobject-Driven Custom Bundle Builder**: Build a full reactive AJAX Bundle Builder drawer allowing customers to pick any 2, 3, or 5 products with live price calculation and automated Shopify bundle discount application.
 2. **WebP Image Asset Pipeline**: Convert inline data URIs and raw PNGs into responsive WebP images served directly from Shopify's CDN (`image_url: width: ...`) with explicit `srcset` sizes for optimized Core Web Vitals (LCP < 1.2s).
 3. **Automated E2E Playwright Suite**: Implement cross-browser test automation verifying responsive breakpoint layouts down to 320px and testing AJAX cart additions.
+
+---
+
+## 4. AI Workflow Reflection & Systematization
+
+### A. What Was Delegated
+* **Scaffolding & File Conversions**: Migrating pure CSS rules and static HTML sections into standard Shopify template and sections liquid structure.
+* **Shopify Settings Schemas**: Drafting dynamic block models, options, and default preset definitions in the JSON schema fields of each section.
+* **Database Seed Generation**: Compiling the `products-seed-data.json` array containing diverse testing edge-cases (out-of-stock items, missing thumbnails, extremely long titles).
+
+### B. Where the AI Failed & Where I Caught It
+* **Multi-Style Tag Extraction**: The initial CSS extractor regex parsed only the first `<style>` tag, missing the second override stylesheet block containing the official light-mode brand colors. This rendered the store in a dark purple template. I identified this by searching for style tags in the raw prototype and merged both stylesheets together to restore the correct sunlit pale-mint/lavender theme.
+* **Naming Case Discrepancy**: The custom Shopify cart drawer was originally unstyled and static due to a mismatch between camelCase element IDs (`purelaneCartDrawer`) in Liquid and kebab-case queries (`purelane-cart-drawer`) in JavaScript. I caught this by inspecting the DOM, matching the IDs, and updating the JS script to run properly.
+* **Shopify Schema Validation Warnings**: Pushing empty default text strings (`"default": ""`) on text inputs generated compiler errors during Shopify CLI syncing. I resolved this by removing the optional `"default"` parameters entirely to satisfy Shopify's schema validator.
+
+### C. What I Would Systematize Next Time
+* **Pre-Compilation Parsing Pipeline**: Standardize a script that automatically concatenates all CSS/JS tags from static mockups before starting theme generation to prevent missing style assets.
+* **Unified ID Mapping Schema**: Maintain a strict naming dictionary for all custom elements, classes, and IDs (e.g., lowercase kebab-case for all layouts) to enforce 100% agreement between CSS, JS, and HTML layers.
+* **Pre-Flight Theme Checker**: Integrate the `@shopify/theme-check` CLI utility directly into the local environment to catch schema discrepancies and liquid syntax errors before running remote pushes.

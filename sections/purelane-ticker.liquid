@@ -4,12 +4,21 @@
 
 <div class="ticker" aria-hidden="true">
   <div class="track">
-    {%- for block in section.blocks -%}
-      <span>{{ block.settings.text_prefix }} <b>{{ block.settings.text_bold }}</b></span>
-    {%- endfor -%}
-    {%- for block in section.blocks -%}
-      <span>{{ block.settings.text_prefix }} <b>{{ block.settings.text_bold }}</b></span>
-    {%- endfor -%}
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        <span>{{ block.settings.text_prefix }} <b>{{ block.settings.text_bold }}</b></span>
+      {%- endfor -%}
+      {%- for block in section.blocks -%}
+        <span>{{ block.settings.text_prefix }} <b>{{ block.settings.text_bold }}</b></span>
+      {%- endfor -%}
+    {%- else -%}
+      <span>⚡ <b>Bundle & save:</b> Pick any 3 products, pay ₹499 & get free shipping!</span>
+      <span>⚡ <b>Bundle & save:</b> Pick any 3 products, pay ₹499 & get free shipping!</span>
+      <span>⚡ <b>Bundle & save:</b> Pick any 3 products, pay ₹499 & get free shipping!</span>
+      <span>⚡ <b>Bundle & save:</b> Pick any 3 products, pay ₹499 & get free shipping!</span>
+      <span>⚡ <b>Bundle & save:</b> Pick any 3 products, pay ₹499 & get free shipping!</span>
+      <span>⚡ <b>Bundle & save:</b> Pick any 3 products, pay ₹499 & get free shipping!</span>
+    {%- endif -%}
   </div>
 </div>
 
