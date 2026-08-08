@@ -252,7 +252,9 @@ button {
   transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease);
   will-change: opacity, transform, filter;
 }
-.rv.in { opacity: 1; transform: none; filter: none; will-change: auto; }
+.rv.in,
+.shopify-design-mode .rv,
+[data-shopify-editor-events-enabled] .rv { opacity: 1 !important; transform: none !important; filter: none !important; will-change: auto; }
 .rv-d1 { transition-delay: .08s; }
 .rv-d2 { transition-delay: .16s; }
 .rv-d3 { transition-delay: .24s; }

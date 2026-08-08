@@ -14,7 +14,8 @@
 
     /* 1. SCROLL REVEALS */
     var revs = context.querySelectorAll('.rv');
-    if ('IntersectionObserver' in window && !reduce) {
+    var isDesignMode = Boolean(window.Shopify && window.Shopify.designMode);
+    if ('IntersectionObserver' in window && !reduce && !isDesignMode) {
       var ro = new IntersectionObserver(function (es) {
         es.forEach(function (e) {
           if (e.isIntersecting) {
