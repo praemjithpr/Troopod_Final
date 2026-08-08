@@ -25,12 +25,16 @@
     assign price = card_product.price
     assign compare_price = card_product.compare_at_price
     assign is_available = card_product.available
+    assign rating_val = card_product.metafields.reviews.rating | default: rating_value | default: '4.8'
+    assign rating_cnt = card_product.metafields.reviews.rating_count | default: rating_reviews | default: '237'
   else
     assign product_title = fallback_title | default: 'Tap cleaner & limescale remover'
     assign product_url = '#shop'
     assign price = fallback_price | default: 20000
     assign compare_price = fallback_compare_price | default: 29900
     assign is_available = true
+    assign rating_val = rating_value | default: '4.8'
+    assign rating_cnt = rating_reviews | default: '237'
   endif
 
   assign discount_percentage = 0
@@ -102,7 +106,7 @@
   </h4>
 
   <div class="rate">
-    <b>★ {{ rating_value | default: '4.8' }}</b> · {{ rating_reviews | default: '237' }} reviews
+    <b>★ {{ rating_val }}</b> · {{ rating_cnt }} reviews
   </div>
 
   <div class="pr">

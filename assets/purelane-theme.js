@@ -107,14 +107,18 @@
     var scenes = [].slice.call(document.querySelectorAll('.scene'));
     var zones = [].slice.call(document.querySelectorAll('[data-scene]'));
     var stage = document.getElementById('scenes');
+    var railLinks = [].slice.call(document.querySelectorAll('.rail a'));
+    var targets = railLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
     var current = 0;
+    var zoneCache = [];
+    var targetCache = [];
 
     function setScene(n) {
       if (n === current) return;
       current = n;
       scenes.forEach(function (s, i) { s.classList.toggle('on', i + 1 === n); });
-    var zoneCache = [];
-    var targetCache = [];
+      if (stage) stage.setAttribute('data-d', String(n));
+    }
 
     function updateCache() {
       zoneCache = zones.map(function (z) {
@@ -139,9 +143,6 @@
       }
       setScene(n);
     }
-
-    var railLinks = [].slice.call(document.querySelectorAll('.rail a'));
-    var targets = railLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
 
     function syncRail(y) {
       var mid = y + window.innerHeight * 0.42, idx = 0;
