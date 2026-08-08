@@ -60,12 +60,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 /* ---------- WATER CINEMATICS ---------- */
 .water{position:absolute;inset:-14% -10%;pointer-events:none;transition:opacity 1.2s ease}
-.wl{position:absolute;inset:0;will-change:transform;translate:var(--px,0) var(--py,0)}
+.wl{position:absolute;inset:0;will-change:transform;transform:translate3d(var(--px,0),var(--py,0),0);backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .wl .sv{width:100%;height:100%}
-.wl-a{mix-blend-mode:screen;opacity:.8;animation:drift-a 34s linear infinite}
-.wl-b{mix-blend-mode:screen;opacity:.54;animation:drift-b 23s linear infinite}
-.wl-c{mix-blend-mode:screen;opacity:.5;animation:shaft-sway 19s ease-in-out infinite}
-.wl-s{mix-blend-mode:screen;opacity:.7;animation:surface 11s ease-in-out infinite;transform-origin:50% 0}
+.wl-a{mix-blend-mode:screen;opacity:.8;animation:drift-a 34s linear infinite;will-change:transform}
+.wl-b{mix-blend-mode:screen;opacity:.54;animation:drift-b 23s linear infinite;will-change:transform}
+.wl-c{mix-blend-mode:screen;opacity:.5;animation:shaft-sway 19s ease-in-out infinite;will-change:transform}
+.wl-s{mix-blend-mode:screen;opacity:.7;animation:surface 11s ease-in-out infinite;transform-origin:50% 0;will-change:transform}
 @keyframes drift-a{
   0%{transform:translate3d(-3%,0,0) scale(1.06)}
   50%{transform:translate3d(3%,-1.6%,0) scale(1.13)}
@@ -629,4 +629,9 @@ body.shopify-design-mode .rv {
   transform: none !important;
   filter: none !important;
   transition: none !important;
+}
+
+/* Prevent empty wrapper box space for sticky CTA section */
+.purelane-sticky-wrapper {
+  display: contents !important;
 }

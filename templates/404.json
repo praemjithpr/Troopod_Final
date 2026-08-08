@@ -38,9 +38,6 @@
     },
     "signup": {
       "type": "purelane-signup"
-    },
-    "sticky_cta": {
-      "type": "purelane-sticky-cta"
     }
   },
   "order": [
@@ -56,7 +53,6 @@
     "why_bundles",
     "categories",
     "trust_bar",
-    "signup",
-    "sticky_cta"
+    "signup"
   ]
 }
