@@ -33,6 +33,9 @@
     "why_bundles": {
       "type": "purelane-why-bundles"
     },
+    "categories": {
+      "type": "purelane-categories"
+    },
     "trust_bar": {
       "type": "purelane-trust-bar"
     },
@@ -55,6 +58,7 @@
     "shop",
     "full_range",
     "why_bundles",
+    "categories",
     "trust_bar",
     "signup",
     "sticky_cta"
