@@ -1,5 +1,16 @@
 # Purelane Shopify Conversion — Build Notes
 
+## Submission Quick Reference
+- **Subject**: `AI Product Engineer Assignment - [Your Name]`
+- **Recipient**: `nj@troopod.io`
+- **Dev Store URL**: `[Insert Store URL, e.g. https://purelane-demo.myshopify.com]`
+- **Dev Store Storefront Password**: `[Insert Storefront Password]`
+- **GitHub Repository**: `[Insert GitHub Repo URL]`
+- **Metafield Definitions**: Included in [`metafields-schema.json`](file:///c:/Users/PRAEMJITH%20P%20R/Downloads/Tropod/metafields-schema.json)
+- **Seed Products Data**: Included in [`products-seed-data.json`](file:///c:/Users/PRAEMJITH%20P%20R/Downloads/Tropod/products-seed-data.json)
+
+---
+
 ## 1. Prototype Code Audit (What Was Flagged)
 
 While `purelane-homepage.html` is visually striking with dynamic water caustics, glassmorphism gradients, and smooth scroll reveals, it possessed critical flaws that prevented it from running on production Shopify:
