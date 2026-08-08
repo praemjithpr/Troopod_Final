@@ -280,9 +280,11 @@ button {
 
 /* REVEAL TRANSITIONS */
 .rv {
-  opacity: 0; transform: translateY(24px); filter: blur(4px);
+  opacity: 1; transform: none; filter: none;
   transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease);
-  will-change: opacity, transform, filter;
+}
+.js-anim .rv:not(.in) {
+  opacity: 0; transform: translateY(24px); filter: blur(4px);
 }
 .rv.in,
 .shopify-design-mode .rv,

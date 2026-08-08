@@ -14,20 +14,7 @@
 
     /* 1. SCROLL REVEALS */
     var revs = context.querySelectorAll('.rv');
-    var isDesignMode = Boolean(window.Shopify && window.Shopify.designMode);
-    if ('IntersectionObserver' in window && !reduce && !isDesignMode) {
-      var ro = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('in');
-            ro.unobserve(e.target);
-          }
-        });
-      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
-      revs.forEach(function (el) { ro.observe(el); });
-    } else {
-      revs.forEach(function (el) { el.classList.add('in'); });
-    }
+    revs.forEach(function (el) { el.classList.add('in'); });
 
     /* 2. HERO PRODUCT STAGE */
     var hstage = context.querySelector('.hstage');
