@@ -150,9 +150,9 @@
 /* AJAX Cart Drawer Handler */
 (function() {
   function initCartDrawer() {
-    var drawer = document.getElementById('purelane-cart-drawer');
-    var overlay = document.getElementById('purelane-cart-overlay');
-    var closeBtn = document.getElementById('purelane-cart-close');
+    var drawer = document.getElementById('purelaneCartDrawer');
+    var overlay = document.getElementById('purelaneCartOverlay');
+    var closeBtn = document.getElementById('purelaneCartClose');
     var cartTriggers = document.querySelectorAll('a[href="/cart"], .cart-trigger, button.cart');
 
     function openCart() {
